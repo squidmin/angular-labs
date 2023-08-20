@@ -1,7 +1,7 @@
 <h2>{{label}}</h2>
 <div class="json-editor">
   <div *ngFor="let item of jsonData; let i = index" class="json-item">
-    <mat-card>
+    <mat-card class="mat-elevation-z8">
       <mat-card-content>
         <mat-form-field>
           <input matInput placeholder="id" [(ngModel)]="item.id">
@@ -22,6 +22,22 @@
     </mat-card>
   </div>
 </div>
+<br>
+<div class="token-input json-editor">
+  <mat-card class="mat-elevation-z8">
+    <mat-form-field appearance="outline">
+      <mat-label>BigQuery API token</mat-label>
+      <textarea matInput [(ngModel)]="bigQueryApiToken" placeholder="BigQuery API token"
+                (change)="queryDryRun()"></textarea>
+    </mat-form-field>
+  </mat-card>
+</div>
+<div>
+  <mat-card class="mat-elevation-z8">
+    <p><code>{{bigQueryApiToken}}</code></p>
+  </mat-card>
+</div>
+<br>
 <div>
   <button (click)="query()">Submit</button>
 </div>

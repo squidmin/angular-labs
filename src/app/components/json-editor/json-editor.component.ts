@@ -1,4 +1,4 @@
-import {Component, OnInit,} from '@angular/core';
+import {Component, Input, OnInit,} from '@angular/core';
 import {query,} from '../../scripts/BigQueryApiService';
 
 @Component({
@@ -10,13 +10,21 @@ export class JsonEditorComponent implements OnInit {
 
   label: string = 'Query';
 
+  @Input()
+  bigQueryApiToken: string = "";
+
   jsonData: any[] = [{}];
 
   constructor() {
   }
 
   query(): any {
-    const response = query();
+    const response = query(this.bigQueryApiToken, this.jsonData);
+    console.log('BQ API response:', JSON.stringify(response));
+  }
+
+  queryDryRun(): any {
+    // TODO
   }
 
   ngOnInit(): void {

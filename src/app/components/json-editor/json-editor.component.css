@@ -24,3 +24,11 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.mat-form-field {
+  font-family: monospace;
+}
+
+.token-input {
+  font-family: monospace;
+}
