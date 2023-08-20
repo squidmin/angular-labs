@@ -6,7 +6,7 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  placeholder: string = JSON.stringify({key: "value"});
+  placeholder: string = JSON.stringify({key: 'value'});
 
   constructor() {}
 
