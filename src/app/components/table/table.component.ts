@@ -8,7 +8,9 @@ import {Component, OnInit} from '@angular/core';
 export class TableComponent implements OnInit {
   placeholder: string = JSON.stringify({key: 'value'});
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }
