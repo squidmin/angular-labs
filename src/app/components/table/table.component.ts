@@ -23,11 +23,11 @@ const SAMPLE_DATA: Row[] = [
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-  placeholder: string = JSON.stringify(SAMPLE_DATA);
-
-  constructor() {
-  }
+  label: string = 'Table'
+  displayedColumns: string[] = ['id', 'creation_timestamp', 'last_update_timestamp', 'column_a', 'column_b',];
+  dataSource = SAMPLE_DATA;
 
   ngOnInit(): void {
+    // Additional init tasks
   }
 }

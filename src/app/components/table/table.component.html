@@ -1,1 +1,28 @@
-<p>{{placeholder}}</p>
+<div>
+  <h2>{{label}}</h2>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef><b><code>id</code></b></th>
+      <td mat-cell *matCellDef="let element"><code>{{element.id}}</code></td>
+    </ng-container>
+    <ng-container matColumnDef="creation_timestamp">
+      <th mat-header-cell *matHeaderCellDef><b><code>creation_timestamp</code></b></th>
+      <td mat-cell *matCellDef="let element"><code>{{element.creation_timestamp}}</code></td>
+    </ng-container>
+    <ng-container matColumnDef="last_update_timestamp">
+      <th mat-header-cell *matHeaderCellDef><b><code>last_update_timestamp</code></b></th>
+      <td mat-cell *matCellDef="let element"><code>{{element.last_update_timestamp}}</code></td>
+    </ng-container>
+    <ng-container matColumnDef="column_a">
+      <th mat-header-cell *matHeaderCellDef><b><code>column_a</code></b></th>
+      <td mat-cell *matCellDef="let element"><code>{{element.column_a}}</code></td>
+    </ng-container>
+    <ng-container matColumnDef="column_b">
+      <th mat-header-cell *matHeaderCellDef><b><code>column_b</code></b></th>
+      <td mat-cell *matCellDef="let element"><code>{{element.column_b}}</code></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
