@@ -13,7 +13,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
 import {AppComponent} from './app.component';
 import {TableComponent} from './components/table/table.component';
-import { JsonEditorComponent } from './components/json-editor/json-editor.component';
+import {JsonEditorComponent} from './components/json-editor/json-editor.component';
 
 @NgModule({
   declarations: [

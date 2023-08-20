@@ -1,0 +1,26 @@
+.json-editor {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.json-item {
+  margin-top: 8px;
+  width: 300px;
+  font-family: monospace;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -1,6 +1,5 @@
 import {Component, OnInit,} from '@angular/core';
-import {Row} from "../../Row";
-import {VALID_TABLE_ROWS} from "../../testdata/DataFixtures";
+import {query,} from '../../scripts/BigQueryApiService';
 
 @Component({
   selector: 'app-json-editor',
@@ -9,10 +8,19 @@ import {VALID_TABLE_ROWS} from "../../testdata/DataFixtures";
 })
 export class JsonEditorComponent implements OnInit {
 
-  jsonData: Row[] = VALID_TABLE_ROWS;
+  label: string = 'Query';
+
+  jsonData: any[] = [{}];
+
+  constructor() {
+  }
+
+  query(): any {
+    const response = query();
+  }
 
   ngOnInit(): void {
-    console.log("Valid table rows fixture:\n", JSON.stringify(this.jsonData));
+    console.log('Valid table rows fixture:\n', JSON.stringify(this.jsonData));
   }
 
 }

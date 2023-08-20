@@ -1,1 +1,27 @@
-<p>json-editor works!</p>
+<h2>{{label}}</h2>
+<div class="json-editor">
+  <div *ngFor="let item of jsonData; let i = index" class="json-item">
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput placeholder="id" [(ngModel)]="item.id">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="creation_timestamp" [(ngModel)]="item.creation_timestamp">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="last_update_timestamp" [(ngModel)]="item.last_update_timestamp">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="column_a" [(ngModel)]="item.column_a">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="column_b" [(ngModel)]="item.column_b">
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div>
+  <button (click)="query()">Submit</button>
+</div>
