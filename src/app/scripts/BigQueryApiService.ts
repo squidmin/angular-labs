@@ -20,11 +20,11 @@ export async function query(bigQueryApiToken: string, requestBody: object[]): Pr
       requestItems.push(row);
     });
     requestItems = requestItems.filter((requestItem: Row) => {
-      return requestItem.id === null &&
-        requestItem.creation_timestamp === null &&
-        requestItem.last_update_timestamp === null &&
-        requestItem.column_a === null &&
-        requestItem.column_b === null;
+      return requestItem.id !== null &&
+        requestItem.creation_timestamp !== null &&
+        requestItem.last_update_timestamp !== null &&
+        requestItem.column_a !== null &&
+        requestItem.column_b !== null;
     });
     console.log("REQUEST_BODY ==", JSON.stringify({body: requestBody}));
     const response = await axios.post(API_URL, {body: requestBody}, {headers: HEADERS},);
