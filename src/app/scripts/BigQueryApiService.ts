@@ -4,30 +4,14 @@ import {Row} from "../Row";
 const API_URL = 'http://localhost:8080/bigquery/query';
 
 export async function query(bigQueryApiToken: string, requestBody: object[]): Promise<void> {
-  const HEADERS = {
-    'Content-Type': 'application/json',
-    'bq-api-token': bigQueryApiToken,
-  };
   try {
-    let requestItems: object[] = [{}];
-    requestBody.forEach((requestItem: object) => {
-      let row: any = {};
-      Object.keys(requestItem).forEach((key: string) => {
-        if ("" === key) {
-          row[key] = null;
-        }
-      });
-      requestItems.push(row);
-    });
-    requestItems = requestItems.filter((requestItem: Row) => {
-      return requestItem.id !== null &&
-        requestItem.creation_timestamp !== null &&
-        requestItem.last_update_timestamp !== null &&
-        requestItem.column_a !== null &&
-        requestItem.column_b !== null;
-    });
-    console.log("REQUEST_BODY ==", JSON.stringify({body: requestBody}));
-    const response = await axios.post(API_URL, {body: requestBody}, {headers: HEADERS},);
+    let requestItems: object[] = buildRequestItems(requestBody);
+    const response = await axios.post(API_URL, {body: requestItems}, {
+      headers: {
+        'Content-Type': 'application/json',
+        'bq-api-token': bigQueryApiToken,
+      }
+    },);
     console.log(response);
   } catch (error: any) {
     console.error('Error calling the API', error);
@@ -39,4 +23,43 @@ export async function query(bigQueryApiToken: string, requestBody: object[]): Pr
       console.error('Error setting up the request:', error.message);
     }
   }
+}
+
+function buildRequestItems(requestBody: object[]): object[] {
+  let requestItems: object[] = [];
+  requestBody.forEach((requestItem: Row) => {
+    let row: any = {};
+    Object.keys(requestItem).forEach((key: string) => {
+      switch (key) {
+        case '':
+          row[key] = null;
+          break;
+        case 'id':
+          row[key] = requestItem.id;
+          break;
+        case 'creation_timestamp':
+          row[key] = requestItem.creation_timestamp;
+          break;
+        case 'last_update_timestamp':
+          row[key] = requestItem.last_update_timestamp;
+          break;
+        case 'column_a':
+          row[key] = requestItem.column_a;
+          break;
+        case 'column_b':
+          row[key] = requestItem.column_b;
+          break;
+        case 'field_added_with_update':
+          row[key] = requestItem.field_added_with_update;
+          break;
+        default:
+          console.log('Key not found:', key);
+      }
+    });
+    requestItems.push(row);
+  });
+  requestItems = requestItems.filter((requestItem: Row) => {
+    return !Object.values(requestItem).every(value => value === null)
+  });
+  return requestItems;
 }

@@ -1,8 +1,9 @@
 table {
   width: 100%;
+  background-color: #efeeee;
 }
 
 .mat-form-field {
-  font-size: 14px;
+  font-size: 10px;
   width: 100%;
 }
