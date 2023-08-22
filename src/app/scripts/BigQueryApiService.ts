@@ -1,18 +1,17 @@
 import axios from 'axios';
-import {Row} from "../Row";
+import {Row} from '../types/Row';
 
-const API_URL = 'http://localhost:8080/bigquery/query';
+const API_URL: string = 'http://localhost:8080/bigquery/query';
 
-export async function query(bigQueryApiToken: string, requestBody: object[]): Promise<void> {
+export async function query(bigQueryApiToken: string, requestBody: object[]) {
   try {
     let requestItems: object[] = buildRequestItems(requestBody);
-    const response = await axios.post(API_URL, {body: requestItems}, {
+    return await axios.post(API_URL, {body: requestItems}, {
       headers: {
         'Content-Type': 'application/json',
         'bq-api-token': bigQueryApiToken,
       }
     },);
-    console.log(response);
   } catch (error: any) {
     console.error('Error calling the API', error);
     if (error.response) {
@@ -23,17 +22,15 @@ export async function query(bigQueryApiToken: string, requestBody: object[]): Pr
       console.error('Error setting up the request:', error.message);
     }
   }
+  return undefined;
 }
 
 function buildRequestItems(requestBody: object[]): object[] {
   let requestItems: object[] = [];
-  requestBody.forEach((requestItem: Row) => {
+  requestBody.forEach((requestItem: any) => {
     let row: any = {};
     Object.keys(requestItem).forEach((key: string) => {
       switch (key) {
-        case '':
-          row[key] = null;
-          break;
         case 'id':
           row[key] = requestItem.id;
           break;

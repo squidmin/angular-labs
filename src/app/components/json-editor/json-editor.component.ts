@@ -11,15 +11,15 @@ export class JsonEditorComponent implements OnInit {
   label: string = 'Query';
 
   @Input()
-  bigQueryApiToken: string = "";
+  bigQueryApiToken: string = '';
 
   jsonData: any[] = [{}];
 
   constructor() {
   }
 
-  query(): any {
-    const response = query(this.bigQueryApiToken, this.jsonData);
+  async query() {
+    const response = await query(this.bigQueryApiToken, this.jsonData);
     console.log('BQ API response:', JSON.stringify(response));
   }
 

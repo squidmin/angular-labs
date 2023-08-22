@@ -1,4 +1,4 @@
-import {Row} from "../Row";
+import {Row} from "../types/Row";
 
 export const VALID_TABLE_ROWS: Row[] = [
   {
