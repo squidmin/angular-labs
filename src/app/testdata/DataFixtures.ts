@@ -11,6 +11,16 @@ export const DEFAULT_REQUEST_ITEMS: ExampleRequestItem[] = [
   },
 ];
 
+export const DEFAULT_RESPONSE_ITEMS: ExampleResponseItem[] = [
+  {
+    id: "asdf-1234",
+    creationTimestamp: "2013-06-24T00:00:00",
+    lastUpdateTimestamp: "2015-04-20T00:00:00",
+    columnA: "column_a_val_1",
+    columnB: "column_b_val_1",
+  },
+];
+
 export const VALID_REQUEST_ITEMS: ExampleRequestItem[] = [
   {
     id: "asdf-1234",

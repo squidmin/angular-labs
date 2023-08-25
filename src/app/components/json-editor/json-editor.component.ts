@@ -5,6 +5,7 @@ import {DEFAULT_REQUEST_ITEMS} from "../../testdata/DataFixtures";
 import {ExampleRequestItem} from "../../types/ExampleRequestItem";
 import {RowDataService} from "../../row-data.service";
 import {ExampleResponseItem} from "../../types/ExampleResponseItem";
+import {BIGQUERY_RESPONSE_ROWS_LIMIT} from "./constants";
 
 @Component({
   selector: 'app-json-editor',
@@ -23,7 +24,7 @@ export class JsonEditorComponent implements OnInit {
   }
 
   add(): void {
-    if (200 > this.requestItems.length) {
+    if (BIGQUERY_RESPONSE_ROWS_LIMIT > this.requestItems.length) {
       this.requestItems.push({});
       console.log('JsonEditorComponent.add(): this.requestItems ===', this.requestItems);
     }
