@@ -1,6 +1,7 @@
 <h2>{{label}}</h2>
+
 <div class="json-editor">
-  <div *ngFor="let item of jsonData; let i = index" class="json-item">
+  <div *ngFor="let item of requestItems; let i = index" class="json-item">
     <mat-card>
       <mat-card-content>
         <mat-form-field>
@@ -22,7 +23,26 @@
     </mat-card>
   </div>
 </div>
+
 <br>
+
+<section>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <button mat-mini-fab color="primary" (click)="add()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" (click)="remove()">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+
 <div class="token-input" style="min-width: 200px; max-width: 40%">
   <mat-card>
     <mat-label>BigQuery API token</mat-label>
@@ -32,9 +52,11 @@
     </mat-form-field>
   </mat-card>
 </div>
-<div style="padding-left: 20px">
-  <p><code>{{bigQueryApiToken}}</code></p>
-</div>
-<div>
+
+<!--<div style="padding-left: 20px">-->
+<!--  <p><code>{{bigQueryApiToken}}</code></p>-->
+<!--</div>-->
+
+<div style="margin-bottom: 18px;">
   <button (click)="query()">Submit</button>
 </div>

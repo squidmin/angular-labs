@@ -1,0 +1,62 @@
+.button-container {
+  display: flex;
+  align-items: center; /* Align items on the y-axis */
+  justify-content: space-between; /* Just for spacing, can be omitted or adjusted */
+}
+
+button[mat-icon-button] {
+  margin-top: 0;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button[mat-raised-button] {
+  padding: 6px 100px; /* Adjust as necessary */
+}
+
+button[mat-raised-button] {
+  line-height: 1; /* Adjust based on your requirement */
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+.query-form {
+  margin: 20px;
+}
+
+.query-form .mat-form-field {
+  margin: 0 0 20px 0;
+  width: 100%;
+}
+
+.query-form-button {
+  margin-right: 10px;
+}
+
+.mat-raised-button {
+  margin-top: 20px;
+}
+
+button[mat-icon-button] mat-icon {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.subquery-container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.remove-button {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}

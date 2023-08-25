@@ -1,4 +1,4 @@
-export interface Row {
+export interface ExampleRequestItem {
   id?: string;
   creation_timestamp?: string;
   last_update_timestamp?: string;

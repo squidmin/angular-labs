@@ -7,19 +7,24 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 import {AppComponent} from './app.component';
 import {TableComponent} from './components/table/table.component';
 import {JsonEditorComponent} from './components/json-editor/json-editor.component';
+import {MatListModule} from "@angular/material/list";
+import { QueryFormComponent } from './components/query-form/query-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
     JsonEditorComponent,
+    QueryFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +38,10 @@ import {JsonEditorComponent} from './components/json-editor/json-editor.componen
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {VALID_TABLE_ROWS} from "../../testdata/DataFixtures";
+import {VALID_REQUEST_ITEMS} from "../../testdata/DataFixtures";
+import {RowDataService} from "../../row-data.service";
+import {ExampleResponseItem} from "../../types/ExampleResponseItem";
 
 @Component({
   selector: 'app-table',
@@ -8,10 +10,17 @@ import {VALID_TABLE_ROWS} from "../../testdata/DataFixtures";
 })
 export class TableComponent implements OnInit {
   label: string = 'Table';
-  displayedColumns: string[] = ['id', 'creation_timestamp', 'last_update_timestamp', 'column_a', 'column_b',];
-  dataSource = VALID_TABLE_ROWS;
+
+  responseItems: ExampleResponseItem[] = VALID_REQUEST_ITEMS;
+
+  displayedColumns: string[] = Object.keys(this.responseItems[0]);
+
+  constructor(private rowDataService: RowDataService) {
+  }
 
   ngOnInit(): void {
-    // Additional init tasks
+    this.rowDataService.rows$.subscribe(receivedRows => {
+      this.responseItems = receivedRows;
+    });
   }
 }

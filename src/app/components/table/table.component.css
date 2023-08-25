@@ -3,6 +3,15 @@ table {
   background-color: #efeeee;
 }
 
+th {
+  font-weight: bold;
+  font-family: monospace;
+}
+
+td {
+  font-family: monospace;
+}
+
 .mat-form-field {
   font-size: 10px;
   width: 100%;
