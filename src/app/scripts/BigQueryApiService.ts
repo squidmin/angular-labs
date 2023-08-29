@@ -5,8 +5,8 @@ const API_URL: string = 'http://localhost:8080/bigquery/query';
 
 export async function query(bigQueryApiToken: string, requestBody: object[]) {
   try {
-    // let requestItems = buildRequestItems(requestBody);
-    return await axios.post(API_URL, {body: requestBody}, {
+    let requestItems = buildRequestItems(requestBody);
+    return await axios.post(API_URL, {body: requestItems}, {
       headers: {
         'Content-Type': 'application/json',
         'bq-api-token': bigQueryApiToken,
@@ -35,10 +35,18 @@ function buildRequestItems(requestBody: object[]): object[] {
           row[key] = requestItem.id;
           break;
         case 'creation_timestamp':
-          row[key] = requestItem.creation_timestamp;
+          const creationTimestamp: object = requestItem[key];
+          const creationTimestampDate: Date = creationTimestamp as Date;
+          const creationTimestampMonth: string = formatNumber(creationTimestampDate.getMonth() + 1);
+          const creationTimestampDay: string = formatNumber(creationTimestampDate.getDate());
+          row[key] = `${creationTimestampDate.getFullYear()}-${creationTimestampMonth}-${creationTimestampDay}T00:00:00`;
           break;
         case 'last_update_timestamp':
-          row[key] = requestItem.last_update_timestamp;
+          const lastUpdateTimestamp: object = requestItem[key];
+          const lastUpdateTimestampDate: Date = lastUpdateTimestamp as Date;
+          const lastUpdateTimestampMonth: string = formatNumber(lastUpdateTimestampDate.getMonth() + 1);
+          const lastUpdateTimestampDay: string = formatNumber(lastUpdateTimestampDate.getDate());
+          row[key] = `${lastUpdateTimestampDate.getFullYear()}-${lastUpdateTimestampMonth}-${lastUpdateTimestampDay}T00:00:00`;
           break;
         case 'column_a':
           row[key] = requestItem.column_a;
@@ -60,3 +68,7 @@ function buildRequestItems(requestBody: object[]): object[] {
   });
   return requestItems;
 }
+
+const formatNumber = (num: number): string => {
+  return num < 10 ? '0' + num : '' + num;
+};

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import {query} from "../../scripts/BigQueryApiService";
 
 @Component({
   selector: 'app-query-form',
@@ -8,6 +9,9 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 })
 export class QueryFormComponent implements OnInit {
   queryForm: FormGroup;
+
+  @Input()
+  bigQueryApiToken: string = "";
 
   constructor(private fb: FormBuilder) {
     this.queryForm = this.fb.group({
@@ -48,7 +52,13 @@ export class QueryFormComponent implements OnInit {
     (this.queryForm.get('subqueries') as FormArray).removeAt(index);
   }
 
-  onSubmit() {
-    console.log(this.queryForm.value);
+  async onSubmit() {
+    console.log(this.queryForm.value.subqueries);
+    const response = await query(this.bigQueryApiToken, this.queryForm.value.subqueries);
+    console.log('BQ API RESPONSE:', JSON.stringify(response?.data.body));
+  }
+
+  queryDryRun(bigQueryApiToken: string): void {
+    // TODO
   }
 }
