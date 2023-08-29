@@ -3,13 +3,13 @@ import {ExampleRequestItem} from '../types/ExampleRequestItem';
 
 const API_URL: string = 'http://localhost:8080/bigquery/query';
 
-export async function query(bigQueryApiToken: string, requestBody: object[]) {
+export async function query(gcpToken: string, requestBody: object[]) {
   try {
     let requestItems = buildRequestItems(requestBody);
     return await axios.post(API_URL, {body: requestItems}, {
       headers: {
         'Content-Type': 'application/json',
-        'bq-api-token': bigQueryApiToken,
+        'gcp-token': gcpToken,
       }
     },);
   } catch (error: any) {
@@ -64,7 +64,7 @@ function buildRequestItems(requestBody: object[]): object[] {
     requestItems.push(row);
   });
   requestItems = requestItems.filter((requestItem: ExampleRequestItem) => {
-    return !Object.values(requestItem).every(value => value === null)
+    return !Object.values(requestItem).every(value => value === null);
   });
   return requestItems;
 }

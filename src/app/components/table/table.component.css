@@ -16,3 +16,12 @@ td {
   font-size: 10px;
   width: 100%;
 }
+
+.url-card {
+  margin: 10px;
+}
+
+mat-card-content {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

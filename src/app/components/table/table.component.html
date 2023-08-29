@@ -1,28 +1,36 @@
-<h2>{{label}}</h2>
-<div>
-  <table mat-table [dataSource]="responseItems">
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>id</th>
-      <td mat-cell *matCellDef="let element">{{element.id}}</td>
-    </ng-container>
-    <ng-container matColumnDef="creation_timestamp">
-      <th mat-header-cell *matHeaderCellDef>creation_timestamp</th>
-      <td mat-cell *matCellDef="let element">{{element.creationTimestamp}}</td>
-    </ng-container>
-    <ng-container matColumnDef="last_update_timestamp">
-      <th mat-header-cell *matHeaderCellDef>last_update_timestamp</th>
-      <td mat-cell *matCellDef="let element">{{element.lastUpdateTimestamp}}</td>
-    </ng-container>
-    <ng-container matColumnDef="column_a">
-      <th mat-header-cell *matHeaderCellDef>column_a</th>
-      <td mat-cell *matCellDef="let element">{{element.columnA}}</td>
-    </ng-container>
-    <ng-container matColumnDef="column_b">
-      <th mat-header-cell *matHeaderCellDef>column_b</th>
-      <td mat-cell *matCellDef="let element">{{element.columnB}}</td>
-    </ng-container>
+<mat-card *ngIf="url">
+  <mat-card-content>
+    <div class="url-card">
+      <p><code>{{url}}</code></p>
+    </div>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+  <div>
+    <table mat-table [dataSource]="responseItems">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let element">{{element.id}}</td>
+      </ng-container>
+      <ng-container matColumnDef="creation_timestamp">
+        <th mat-header-cell *matHeaderCellDef>creation_timestamp</th>
+        <td mat-cell *matCellDef="let element">{{element.creationTimestamp}}</td>
+      </ng-container>
+      <ng-container matColumnDef="last_update_timestamp">
+        <th mat-header-cell *matHeaderCellDef>last_update_timestamp</th>
+        <td mat-cell *matCellDef="let element">{{element.lastUpdateTimestamp}}</td>
+      </ng-container>
+      <ng-container matColumnDef="column_a">
+        <th mat-header-cell *matHeaderCellDef>column_a</th>
+        <td mat-cell *matCellDef="let element">{{element.columnA}}</td>
+      </ng-container>
+      <ng-container matColumnDef="column_b">
+        <th mat-header-cell *matHeaderCellDef>column_b</th>
+        <td mat-cell *matCellDef="let element">{{element.columnB}}</td>
+      </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</div>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</mat-card>

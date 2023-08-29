@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup} from '@angular/forms';
 import {query} from "../../scripts/BigQueryApiService";
+import {RowDataService} from "../../row-data.service";
+import {ExampleResponseItem} from "../../types/ExampleResponseItem";
 
 @Component({
   selector: 'app-query-form',
@@ -11,17 +13,17 @@ export class QueryFormComponent implements OnInit {
   queryForm: FormGroup;
 
   @Input()
-  bigQueryApiToken: string = "";
+  gcpToken: string = "";
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private rowDataService: RowDataService) {
     this.queryForm = this.fb.group({
-      subqueries: this.fb.array([this.createSubquery()])
+      subqueries: this.fb.array([this.createSubquery()]),
     });
   }
 
   ngOnInit() {
     this.queryForm = this.fb.group({
-      subqueries: this.fb.array([this.createSubquery()])
+      subqueries: this.fb.array([this.createSubquery()]),
     });
   }
 
@@ -40,7 +42,7 @@ export class QueryFormComponent implements OnInit {
       creation_timestamp: [''],
       last_update_timestamp: [''],
       column_a: [''],
-      column_b: ['']
+      column_b: [''],
     });
   }
 
@@ -54,8 +56,15 @@ export class QueryFormComponent implements OnInit {
 
   async onSubmit() {
     console.log(this.queryForm.value.subqueries);
-    const response = await query(this.bigQueryApiToken, this.queryForm.value.subqueries);
-    console.log('BQ API RESPONSE:', JSON.stringify(response?.data.body));
+    const response = await query(this.gcpToken, this.queryForm.value.subqueries);
+    // console.log('BQ API RESPONSE:', JSON.stringify(response?.data.body));
+    const rows: ExampleResponseItem[] = response?.data.body;
+    const url: string = response?.data.url;
+    if (rows.length) {
+      this.rowDataService.setRows(rows);
+    } else if (url) {
+      this.rowDataService.setUrl(url);
+    }
   }
 
   queryDryRun(bigQueryApiToken: string): void {
