@@ -38,6 +38,11 @@ mat-icon {
   margin-right: 10px;
 }
 
+.query-form-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
 .mat-raised-button {
   margin-top: 20px;
 }
@@ -63,11 +68,15 @@ button[mat-icon-button] mat-icon {
 
 .token-input {
   font-family: monospace;
-  min-width: 100%;
-  display: flex;
+  margin: 10px;
 }
-textarea {
+
+matInput {
   font-family: monospace;
-  min-width: 100%;
-  display: flex;
+  font-size: 12px;
+}
+
+mat-label {
+  font-family: monospace;
+  font-size: 14px;
 }

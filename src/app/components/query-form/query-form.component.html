@@ -4,27 +4,27 @@
       <div class="subquery-container" [formGroupName]="i">
         <mat-form-field appearance="outline">
           <mat-label>ID</mat-label>
-          <input matInput formControlName="id">
+          <input style="font-family: monospace; font-size: 14px;" matInput formControlName="id">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Creation Timestamp</mat-label>
-          <input matInput [matDatepicker]="picker1" formControlName="creation_timestamp">
+          <input style="font-family: monospace;" matInput [matDatepicker]="picker1" formControlName="creation_timestamp">
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker #picker1></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Last Update Timestamp</mat-label>
-          <input matInput [matDatepicker]="picker2" formControlName="last_update_timestamp">
+          <input style="font-family: monospace;" matInput [matDatepicker]="picker2" formControlName="last_update_timestamp">
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
           <mat-datepicker #picker2></mat-datepicker>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Column A</mat-label>
-          <input matInput formControlName="column_a">
+          <input style="font-family: monospace;" matInput formControlName="column_a">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Column B</mat-label>
-          <input matInput formControlName="column_b">
+          <input style="font-family: monospace;" matInput formControlName="column_b">
         </mat-form-field>
         <button class="remove-button" mat-icon-button (click)="removeSubquery(i)" *ngIf="hasMultipleSubqueries()">
           <mat-icon>remove</mat-icon>
@@ -33,18 +33,27 @@
     </div>
   </form>
   <mat-card>
-    <div class="token-input">
-      <mat-form-field>
-        <textarea style="font-size: 10px; width: 100%; font-family: monospace;" matInput [(ngModel)]="gcpToken"
-                  placeholder="Paste token here" (change)="queryDryRun(gcpToken)">
-        </textarea>
-      </mat-form-field>
-    </div>
+    <div class="query-form-bottom">
     <div class="button-container">
       <button mat-icon-button (click)="addSubquery()">
         <mat-icon>add</mat-icon>
       </button>
-      <button mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
+    </div>
+    <div class="token-input">
+      <mat-form-field style="width: 450px;">
+        <textarea style="font-size: 10px; font-family: monospace;" matInput [(ngModel)]="gcpToken"
+                  placeholder="Paste token here" (change)="queryDryRun(gcpToken)">
+        </textarea>
+      </mat-form-field>
+    </div>
+    </div>
+
+    <div class="query-form-bottom">
+      <input style="margin: 10px;" type="file" (change)="onFileSelected($event)">
+      <button style="margin: 10px; justify-content: right;" mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
     </div>
   </mat-card>
 </mat-card>
+
+
+
