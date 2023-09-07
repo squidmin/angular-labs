@@ -1,59 +1,75 @@
-<mat-card>
-  <form [formGroup]="queryForm" (ngSubmit)="onSubmit()">
-    <div formArrayName="subqueries" *ngFor="let subquery of subqueries.controls; let i = index">
-      <div class="subquery-container" [formGroupName]="i">
-        <mat-form-field appearance="outline">
-          <mat-label>ID</mat-label>
-          <input style="font-family: monospace; font-size: 14px;" matInput formControlName="id">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Creation Timestamp</mat-label>
-          <input style="font-family: monospace;" matInput [matDatepicker]="picker1" formControlName="creation_timestamp">
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Last Update Timestamp</mat-label>
-          <input style="font-family: monospace;" matInput [matDatepicker]="picker2" formControlName="last_update_timestamp">
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Column A</mat-label>
-          <input style="font-family: monospace;" matInput formControlName="column_a">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Column B</mat-label>
-          <input style="font-family: monospace;" matInput formControlName="column_b">
-        </mat-form-field>
-        <button class="remove-button" mat-icon-button (click)="removeSubquery(i)" *ngIf="hasMultipleSubqueries()">
-          <mat-icon>remove</mat-icon>
-        </button>
+<div class="card-responsive">
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Request Parameters
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form [formGroup]="queryForm" (ngSubmit)="onSubmit()">
+      <div formArrayName="subqueries" *ngFor="let subquery of subqueries.controls; let i = index">
+        <div class="subquery-container" [formGroupName]="i">
+          <mat-form-field appearance="outline">
+            <mat-label>id</mat-label>
+            <input matInput formControlName="id">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>creation_timestamp</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="creation_timestamp">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>last_update_timestamp</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="last_update_timestamp">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>column_a</mat-label>
+            <input matInput formControlName="column_a">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>column_b</mat-label>
+            <input matInput formControlName="column_b">
+          </mat-form-field>
+
+          <button type="button"
+                  class="delete-button"
+                  mat-icon-button (click)="removeSubquery(i)" *ngIf="hasMultipleSubqueries()">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+          <button type="button" class="clear-row fab-button" mat-icon-button (click)="clearRow(i)">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
       </div>
-    </div>
-  </form>
-  <mat-card>
-    <div class="query-form-bottom">
+    </form>
     <div class="button-container">
-      <button mat-icon-button (click)="addSubquery()">
+      <button mat-icon-button type="button" class="add-button" (click)="addSubquery()">
         <mat-icon>add</mat-icon>
       </button>
+      <div class="inner-button-container">
+        <button mat-raised-button type="button" (click)="clearAll()">Refresh</button>
+        <button mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
+      </div>
     </div>
-    <div class="token-input">
-      <mat-form-field style="width: 450px;">
-        <textarea style="font-size: 10px; font-family: monospace;" matInput [(ngModel)]="gcpToken"
-                  placeholder="Paste token here" (change)="queryDryRun(gcpToken)">
-        </textarea>
-      </mat-form-field>
-    </div>
-    </div>
+  </mat-expansion-panel>
+</div>
 
-    <div class="query-form-bottom">
-      <input style="margin: 10px;" type="file" (change)="onFileSelected($event)">
-      <button style="margin: 10px; justify-content: right;" mat-raised-button type="submit" (click)="onSubmit()">Submit</button>
-    </div>
-  </mat-card>
-</mat-card>
+<input type="file" class="file-upload" (change)="onFileSelected($event)">
 
-
-
+<div class="token-input">
+    <mat-form-field>
+      <textarea style="font-size: 10px; width: 100%;"
+                matInput
+                [(ngModel)]="gcpToken"
+                placeholder="Paste token here"
+                (change)="queryDryRun(gcpToken)">
+      </textarea>
+    </mat-form-field>
+</div>

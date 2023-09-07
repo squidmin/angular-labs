@@ -1,24 +1,40 @@
+.card-responsive .token-input {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+}
+
+mat-expansion-panel {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+mat-card {
+  border-collapse: collapse;
+  margin: 0 0 1rem;
+  max-width: 100%;
+  width: 100%;
+}
+
 .button-container {
   display: flex;
-  align-items: center; /* Align items on the y-axis */
-  justify-content: space-between; /* Just for spacing, can be omitted or adjusted */
+  align-items: center;
+  justify-content: space-between;
 }
 
 button[mat-icon-button] {
   margin-top: 0;
-  margin-bottom: 20px;
-  margin-left: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 button[mat-raised-button] {
-  padding: 6px 100px; /* Adjust as necessary */
-}
-
-button[mat-raised-button] {
-  line-height: 1; /* Adjust based on your requirement */
+  padding: 6px 100px;
+  line-height: 1;
+  margin-right: 20px;
 }
 
 mat-icon {
@@ -26,25 +42,17 @@ mat-icon {
 }
 
 .query-form {
-  margin: 20px;
+  min-width: 100%;
+  margin: 0 0 20px 0;
+  width: 100%;
 }
 
-.query-form .mat-form-field {
-  margin: 0 0 20px 0;
+.mat-form-field {
   width: 100%;
 }
 
 .query-form-button {
   margin-right: 10px;
-}
-
-.query-form-bottom {
-  display: flex;
-  justify-content: space-between;
-}
-
-.mat-raised-button {
-  margin-top: 20px;
 }
 
 button[mat-icon-button] mat-icon {
@@ -54,29 +62,47 @@ button[mat-icon-button] mat-icon {
 }
 
 .subquery-container {
-  margin: 0;
-  padding: 0;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .remove-button {
   margin: 0;
   padding: 0;
+  justify-content: space-between;
   vertical-align: middle;
 }
 
-.token-input {
-  font-family: monospace;
-  margin: 10px;
+.clear-row {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-matInput {
-  font-family: monospace;
-  font-size: 12px;
+.mat-fab button {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-mat-label {
-  font-family: monospace;
-  font-size: 14px;
+.file-upload {
+  margin-bottom: 10px;
+}
+
+.inner-button-container {
+  display: flex;
+  justify-content: left;
+  line-height: 1;
+}
+
+.add-button {
+  line-height: 1px;
+}
+
+.delete-button {
+  margin-bottom: 20px;
 }

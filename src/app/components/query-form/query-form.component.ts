@@ -4,6 +4,7 @@ import {query} from "../../scripts/BigQueryApiService";
 import {RowDataService} from "../../row-data.service";
 import {ExampleResponseItem} from "../../types/ExampleResponseItem";
 import {ChangeDetectorRef} from '@angular/core';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-query-form',
@@ -13,6 +14,8 @@ import {ChangeDetectorRef} from '@angular/core';
 })
 export class QueryFormComponent implements OnInit {
   queryForm: FormGroup;
+
+  panelOpenState: boolean = true;
 
   @Input()
   gcpToken: string = "";
@@ -25,7 +28,6 @@ export class QueryFormComponent implements OnInit {
     this.queryForm = this.fb.group({
       subqueries: this.fb.array([this.createSubquery()]),
     });
-
   }
 
   ngOnInit() {
@@ -76,7 +78,7 @@ export class QueryFormComponent implements OnInit {
     // TODO
   }
 
-  onFileSelected(event: Event) {
+  onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
@@ -89,11 +91,10 @@ export class QueryFormComponent implements OnInit {
     }
   }
 
-  processCSV(data: string) {
+  processCSV(data: string): void {
     let csvRecordsArray = data.split(/\r\n|\n/);
     console.log('csvRecordsArray ===', csvRecordsArray);
 
-    let sqs = [];
     csvRecordsArray.forEach((row, index) => {
       // if (index === 0) {
       // Handle header of CSV, if there's any
@@ -117,13 +118,27 @@ export class QueryFormComponent implements OnInit {
         );
       }
     });
-    this.removeSubquery(0);
+    this.removeSubquery(0);  // Removes default blank object
     this.cdr.detectChanges();
   }
 
-  isBlank(sqs: any) {
-    console.log('sqs.id ===', sqs.id);
-    return false;
+  clearAll() {
+    const control = this.queryForm.get('subqueries') as FormArray;
+    control.clear();
+    this.addSubquery();
+  }
+
+  clearRow(index: number) {
+    const control = this.subqueries.at(index) as FormGroup;
+    const updatedValues: any = {};
+    Object.keys(control.value).forEach(key => {
+      if (typeof control.value[key] === "string" || control.value[key] instanceof Date) {
+        updatedValues[key] = "";
+      } else {
+        updatedValues[key] = control.value[key];
+      }
+    });
+    control.setValue(updatedValues);
   }
 
 }
