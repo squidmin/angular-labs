@@ -3,9 +3,9 @@ import {TableComponent} from './table.component';
 import {RowDataService} from '../../row-data.service';
 import {of} from 'rxjs';
 import {VALID_REQUEST_ITEMS, VALID_RESPONSE_ITEMS} from '../../testdata/DataFixtures';
-import {MatCardModule} from "@angular/material/card";
-import {MatTableModule} from "@angular/material/table";
-import {ExampleResponseItem} from "../../types/ExampleResponseItem";
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {ExampleResponseItem} from '../../types/ExampleResponseItem';
 
 describe('TableComponent', () => {
   let component: TableComponent;
