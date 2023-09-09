@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {VALID_REQUEST_ITEMS} from "../../testdata/DataFixtures";
+import {VALID_REQUEST_ITEMS, VALID_RESPONSE_ITEMS} from "../../testdata/DataFixtures";
 import {RowDataService} from "../../row-data.service";
 import {ExampleResponseItem} from "../../types/ExampleResponseItem";
 
