@@ -44,7 +44,6 @@ describe('TableComponent', () => {
 
   it('should set url on component initialization', () => {
     component.ngOnInit();
-    expect(mockUrl).toEqual('http://example.com')
     expect(component.url).toEqual(mockUrl);
   });
 
