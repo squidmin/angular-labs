@@ -15,7 +15,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {AppComponent} from './app.component';
 import {TableComponent} from './components/table/table.component';
-import {JsonEditorComponent} from './components/json-editor/json-editor.component';
 import {MatListModule} from "@angular/material/list";
 import {QueryFormComponent} from './components/query-form/query-form.component';
 import {MatSelectModule} from "@angular/material/select";
@@ -25,7 +24,6 @@ import {MatExpansionModule} from "@angular/material/expansion";
   declarations: [
     AppComponent,
     TableComponent,
-    JsonEditorComponent,
     QueryFormComponent,
   ],
   imports: [
