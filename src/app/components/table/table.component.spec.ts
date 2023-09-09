@@ -12,12 +12,12 @@ describe('TableComponent', () => {
   let fixture: ComponentFixture<TableComponent>;
   let mockRowDataService: jasmine.SpyObj<RowDataService>;
 
-  const mockRows: ExampleResponseItem[] = [...VALID_RESPONSE_ITEMS];
+  const mockRows: ExampleResponseItem[] = VALID_RESPONSE_ITEMS;
   const mockUrl = 'http://example.com';
 
   beforeEach(async () => {
     mockRowDataService = jasmine.createSpyObj('RowDataService', ['rows$', 'url$']);
-    mockRowDataService.rows$ = of([...VALID_RESPONSE_ITEMS]); // initial mock data
+    mockRowDataService.rows$ = of(VALID_RESPONSE_ITEMS); // initial mock data
     mockRowDataService.url$ = of(mockUrl);
 
     await TestBed.configureTestingModule({
