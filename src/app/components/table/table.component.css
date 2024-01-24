@@ -17,16 +17,6 @@ mat-header-row {
   display: table-row;
 }
 
-/*table {*/
-/*  width: 100%;*/
-/*  background-color: #efeeee;*/
-/*}*/
-
-/*th {*/
-/*  font-weight: bold;*/
-/*  font-family: monospace;*/
-/*}*/
-
 th.mat-header-cell {
   padding-right: 60px;
 }
@@ -42,21 +32,3 @@ mat-header-cell {
   width: auto;
   word-wrap: initial;
 }
-
-/*td {*/
-/*  font-family: monospace;*/
-/*}*/
-
-/*.mat-form-field {*/
-/*  font-size: 10px;*/
-/*  width: 100%;*/
-/*}*/
-
-/*.url-card {*/
-/*  margin: 10px;*/
-/*}*/
-
-/*mat-card-content {*/
-/*  word-wrap: break-word;*/
-/*  overflow-wrap: break-word;*/
-/*}*/
