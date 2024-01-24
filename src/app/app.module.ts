@@ -19,6 +19,7 @@ import {MatListModule} from "@angular/material/list";
 import {QueryFormComponent} from './components/query-form/query-form.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     MatListModule,
     MatSelectModule,
     MatExpansionModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

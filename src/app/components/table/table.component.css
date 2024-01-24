@@ -1,27 +1,62 @@
-table {
-  width: 100%;
-  background-color: #efeeee;
-}
-
-th {
-  font-weight: bold;
-  font-family: monospace;
-}
-
-td {
-  font-family: monospace;
-}
-
-.mat-form-field {
-  font-size: 10px;
+.table-responsive {
+  display: block;
+  overflow-x: auto;
   width: 100%;
 }
 
-.url-card {
-  margin: 10px;
+mat-table {
+  border-collapse: collapse;
+  display: table;
+  margin: 0 0 1rem;
+  max-width: 1200px;
+  width: 1200px;
 }
 
-mat-card-content {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+mat-row,
+mat-header-row {
+  display: table-row;
 }
+
+/*table {*/
+/*  width: 100%;*/
+/*  background-color: #efeeee;*/
+/*}*/
+
+/*th {*/
+/*  font-weight: bold;*/
+/*  font-family: monospace;*/
+/*}*/
+
+th.mat-header-cell {
+  padding-right: 60px;
+}
+
+mat-cell,
+mat-header-cell {
+  display: table-cell;
+  line-break: unset;
+  overflow: hidden;
+  padding: 0 5px;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: auto;
+  word-wrap: initial;
+}
+
+/*td {*/
+/*  font-family: monospace;*/
+/*}*/
+
+/*.mat-form-field {*/
+/*  font-size: 10px;*/
+/*  width: 100%;*/
+/*}*/
+
+/*.url-card {*/
+/*  margin: 10px;*/
+/*}*/
+
+/*mat-card-content {*/
+/*  word-wrap: break-word;*/
+/*  overflow-wrap: break-word;*/
+/*}*/

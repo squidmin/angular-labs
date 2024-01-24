@@ -1,4 +1,5 @@
 export interface ExampleRequestItem {
+  [key: string]: any;
   id?: string;
   creation_timestamp?: string;
   last_update_timestamp?: string;

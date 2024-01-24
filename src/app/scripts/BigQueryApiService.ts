@@ -5,8 +5,8 @@ const API_URL: string = 'http://localhost:8080/bigquery/query';
 
 export async function query(gcpToken: string, requestBody: object[]) {
   try {
-    let requestItems = buildRequestItems(requestBody);
-    return await axios.post(API_URL, {body: requestItems}, {
+    let requestItems = buildSubqueries(requestBody);
+    return await axios.post(API_URL, {subqueries: requestItems}, {
       headers: {
         'Content-Type': 'application/json',
         'gcp-token': gcpToken,
@@ -25,7 +25,7 @@ export async function query(gcpToken: string, requestBody: object[]) {
   return undefined;
 }
 
-function buildRequestItems(requestBody: object[]): object[] {
+function buildSubqueries(requestBody: object[]): object[] {
   let requestItems: object[] = [];
   requestBody.forEach((requestItem: any) => {
     let row: any = {};
@@ -37,16 +37,12 @@ function buildRequestItems(requestBody: object[]): object[] {
         case 'creation_timestamp':
           const creationTimestamp: object = requestItem[key];
           const creationTimestampDate: Date = creationTimestamp as Date;
-          const creationTimestampMonth: string = formatNumber(creationTimestampDate.getMonth() + 1);
-          const creationTimestampDay: string = formatNumber(creationTimestampDate.getDate());
-          row[key] = `${creationTimestampDate.getFullYear()}-${creationTimestampMonth}-${creationTimestampDay}T00:00:00`;
+          row[key] = creationTimestampDate;
           break;
         case 'last_update_timestamp':
           const lastUpdateTimestamp: object = requestItem[key];
           const lastUpdateTimestampDate: Date = lastUpdateTimestamp as Date;
-          const lastUpdateTimestampMonth: string = formatNumber(lastUpdateTimestampDate.getMonth() + 1);
-          const lastUpdateTimestampDay: string = formatNumber(lastUpdateTimestampDate.getDate());
-          row[key] = `${lastUpdateTimestampDate.getFullYear()}-${lastUpdateTimestampMonth}-${lastUpdateTimestampDay}T00:00:00`;
+          row[key] = lastUpdateTimestampDate;
           break;
         case 'column_a':
           row[key] = requestItem.column_a;
@@ -68,7 +64,3 @@ function buildRequestItems(requestBody: object[]): object[] {
   });
   return requestItems;
 }
-
-const formatNumber = (num: number): string => {
-  return num < 10 ? '0' + num : '' + num;
-};
