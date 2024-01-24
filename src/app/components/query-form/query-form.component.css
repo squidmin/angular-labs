@@ -5,9 +5,6 @@
 }
 
 mat-expansion-panel {
-  /*display: block;*/
-  /*overflow-x: auto;*/
-  /*width: 100%;*/
   margin-bottom: 10px;
 }
 
@@ -41,8 +38,6 @@ button[mat-icon-button] {
   justify-content: center;
 }
 
-
-
 button[mat-raised-button] {
   padding: 6px 100px;
   line-height: 1;
@@ -58,21 +53,12 @@ mat-icon {
   margin: 20px;
 }
 
-/*.query-form {*/
-/*  margin: 0 0 20px 0;*/
-/*  width: 100%;*/
-/*}*/
-
 mat-form-field {
   width: 100%;
 }
 
 .query-form-button {
   margin-right: 10px;
-}
-
-.mat-raised-button {
-
 }
 
 button[mat-icon-button] mat-icon {
@@ -94,12 +80,6 @@ button[mat-icon-button] mat-icon {
   justify-content: space-between;
   vertical-align: middle;
 }
-
-/*.clear-row {*/
-/*  margin-right: 10px;*/
-/*  padding: 20px;*/
-/*  margin-bottom: 20px;*/
-/*}*/
 
 .clear-row {
   padding: 0;
@@ -124,99 +104,3 @@ button[mat-icon-button] mat-icon {
 .delete-button {
   margin-bottom: 20px;
 }
-
-/*mat-card {*/
-/*  border-collapse: collapse;*/
-/*  margin: 0 0 1rem;*/
-/*  max-width: 100%;*/
-/*  width: 100%;*/
-/*}*/
-
-/*.button-container {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: space-between;*/
-/*}*/
-
-/*button[mat-icon-button] {*/
-/*  margin-top: 0;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*}*/
-
-/*button[mat-raised-button] {*/
-/*  padding: 6px 100px;*/
-/*  line-height: 1;*/
-/*  margin-right: 20px;*/
-/*}*/
-
-/*mat-icon {*/
-/*  vertical-align: middle;*/
-/*}*/
-
-/*.query-form {*/
-/*  min-width: 100%;*/
-/*  margin: 0 0 20px 0;*/
-/*  width: 100%;*/
-/*}*/
-
-/*.mat-form-field {*/
-/*  width: 100%;*/
-/*}*/
-
-/*.query-form-button {*/
-/*  margin-right: 10px;*/
-/*}*/
-
-/*button[mat-icon-button] mat-icon {*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*  line-height: 1;*/
-/*}*/
-
-/*.subquery-container {*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: flex-start;*/
-/*  width: 100%;*/
-/*}*/
-
-/*.remove-button {*/
-/*  margin: 0;*/
-/*  padding: 0;*/
-/*  justify-content: space-between;*/
-/*  vertical-align: middle;*/
-/*}*/
-
-/*.clear-row {*/
-/*  margin-bottom: 20px;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*}*/
-
-/*.mat-fab button {*/
-/*  margin-left: 20px;*/
-/*  display: flex;*/
-/*  align-items: center;*/
-/*  justify-content: center;*/
-/*}*/
-
-/*.file-upload {*/
-/*  margin-bottom: 10px;*/
-/*}*/
-
-/*.inner-button-container {*/
-/*  display: flex;*/
-/*  justify-content: left;*/
-/*  line-height: 1;*/
-/*}*/
-
-/*.add-button {*/
-/*  line-height: 1px;*/
-/*}*/
-
-/*.delete-button {*/
-/*  margin-bottom: 20px;*/
-/*}*/
